@@ -1,0 +1,18 @@
+0d6d9e4db5dc57bf80722d24ce3cb451
+
+
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '93e5dca1camsh7af4e2cc8d637f4p1ac9c2jsne4626dcba982',
+		'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com'
+	}
+};
+
+fetch('https://wft-geo-db.p.rapidapi.com/v1/geo/cities', options)
+	.then(response => response.json())
+	.then(response => console.log(response))
+	.catch(err => console.error(err));
+
+
+	https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
