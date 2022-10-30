@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   .today {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     img {
       height: 50px;
