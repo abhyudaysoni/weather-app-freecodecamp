@@ -15,6 +15,7 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 1rem auto;
     .city {
       font-weight: 700;
       font-size: 1.5rem;
@@ -32,7 +33,11 @@ export const Container = styled.div`
     .temperature {
       font-weight: 600;
       font-size: 4rem;
-      margin: 1rem;
+      margin: 0;
+    }
+    .temperature-min,
+    .temperature-max {
+      margin: 0 1rem;
     }
     .details {
       width: 100%;

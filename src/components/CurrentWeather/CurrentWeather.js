@@ -19,9 +19,17 @@ const CurrentWeather = ({ currentWeather }) => {
           />
         </div>
         <div className="bottom">
-          <p className="temperature">{`${Math.round(
-            currentWeather.main.temp
-          )}°C`}</p>
+          <div className="temperatures">
+            <p className="temperature-min">{`Min: ${Math.round(
+              currentWeather.main.temp_min
+            )}°C`}</p>
+            <p className="temperature">{`${Math.round(
+              currentWeather.main.temp
+            )}°C`}</p>
+            <p className="temperature-max">{`Max: ${Math.round(
+              currentWeather.main.temp_max
+            )}°C`}</p>
+          </div>
           <div className="details">
             <div className="parameter-row">
               <span className="parameter-label">Details</span>
