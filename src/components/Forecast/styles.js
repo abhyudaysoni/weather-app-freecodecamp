@@ -10,12 +10,12 @@ export const Container = styled.div`
     }
   }
   .daily-item {
-    margin: 2rem;
+    margin: 0.5rem;
     display: flex;
-    width: 150px;
+    width: 100px;
     flex-direction: column;
     align-items: center;
-    height: 150px;
+    height: fit-content;
     padding: 1rem;
     justify-content: space-between;
     border-radius: 10px;

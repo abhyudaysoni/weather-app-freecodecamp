@@ -9,8 +9,11 @@ import ForecastWeather from "./components/Forecast/ForecastWeather";
 const sampleCity = { latitude: "28.6139", longitude: "77.2090" };
 
 export const Container = styled.div`
-  max-width: 1080px;
+  width: 80%;
   margin: 1rem auto;
+  @media (max-width: 600px) {
+    width: 90%;
+  }
 `;
 
 function App() {

@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   .weather {
-    width: 400px;
+    max-width: 600px;
+    min-width: 300px;
     border-radius: 5px;
     box-shadow: 10px -2px 20px 2px rgb(0 0 0 / 30%);
     color: white;
@@ -57,4 +58,6 @@ export const Container = styled.div`
       font-weight: 600;
     }
   }
+  @media (max-width: 400px) {
+  } ;
 `;
