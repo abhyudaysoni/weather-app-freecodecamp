@@ -31,13 +31,29 @@ export const Container = styled.div`
     align-items: center;
     justify-content: space-between;
     .left {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       align-items: center;
-      justify-content: space-between;
-      width: 80%;
+      width: 100%;
+      p {
+        text-align: center;
+      }
+      h3 {
+        text-align: center;
+      }
     }
     .weather-icon {
       height: 50px;
+    }
+  }
+  @media (max-width: 750px) {
+    .weekday {
+      .left {
+        display: flex;
+        flex-direction: column;
+        width: auto;
+        align-items: flex-start;
+      }
     }
   }
   @media (max-width: 600px) {
