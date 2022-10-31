@@ -47,6 +47,10 @@ export const Container = styled.div`
     }
   }
   @media (max-width: 750px) {
+    .accordion {
+      width: 100%;
+      margin: auto;
+    }
     .weekday {
       .left {
         display: flex;

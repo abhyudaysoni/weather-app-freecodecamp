@@ -11,9 +11,12 @@ body {
 }
 .css-6j8wv5-Input {
   cursor: text;
-  height: 50px;
 }
 .css-tj5bde-Svg {
   cursor: pointer;
   width: 40px;
+}
+div.css-1s2u09g-control {
+  border-radius: 10px;
+  height: 60px;
 }
