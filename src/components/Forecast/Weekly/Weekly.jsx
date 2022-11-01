@@ -24,7 +24,7 @@ const Weekly = ({ forecastWeather }) => {
     (item, index) => item.dt_txt.split(" ")[1] === "12:00:00"
   );
 
-  const forecastDays = WEEK_DAYS.slice(currentDay, weekly.length).concat(
+  const forecastDays = WEEK_DAYS.slice(currentDay + 1, 7).concat(
     WEEK_DAYS.slice(0, currentDay)
   );
 
