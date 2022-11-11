@@ -9,6 +9,7 @@ const Today = ({ forecastWeather }) => {
       <h2>Today</h2>
       <div className="today">
         {forecastWeather.list.splice(0, timeArrayLength).map((item, index) => {
+          console.log(item);
           const time = item.dt_txt.split(" ")[1];
           return (
             <div key={index} className="daily-item">
@@ -18,6 +19,7 @@ const Today = ({ forecastWeather }) => {
                   className="icon-small"
                   alt="weather"
                 />
+                <h3>{item.main.temp}°C</h3>
               </div>
               <label className="time">{time}</label>
               <div className="details">
