@@ -3,12 +3,11 @@ import { Container } from "./styles";
 import Today from "./Today/Today";
 import Weekly from "./Weekly/Weekly";
 
-
-const ForecastWeather = ({ forecastWeather }) => {
+const ForecastWeather = ({ weekly, today }) => {
   return (
     <Container>
-      <Today forecastWeather={forecastWeather} />
-      <Weekly forecastWeather={forecastWeather} />
+      <Today today={today} />
+      <Weekly weekly={weekly} />
     </Container>
   );
 };

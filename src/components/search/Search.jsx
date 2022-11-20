@@ -28,6 +28,7 @@ const Search = (props) => {
       })
       .catch((err) => console.error(err));
   };
+
   return (
     <>
       <AsyncPaginate

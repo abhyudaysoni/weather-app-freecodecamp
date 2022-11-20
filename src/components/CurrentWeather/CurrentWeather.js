@@ -1,7 +1,10 @@
 import React from "react";
+import { calcMinMaxTemp } from "../Forecast/Weekly/helper";
 import { Container } from "./styles";
 
-const CurrentWeather = ({ currentWeather }) => {
+const CurrentWeather = ({ currentWeather, today }) => {
+  const minMaxTemp = calcMinMaxTemp(today)[0];
+  const avgTemp = ((minMaxTemp.min + minMaxTemp.max) / 2).toFixed(2);
   return (
     <Container>
       <div className="weather">
@@ -20,18 +23,14 @@ const CurrentWeather = ({ currentWeather }) => {
         </div>
         <div className="bottom">
           <div className="temperatures">
-            <p className="temperature-min">{`Min: ${(
-              currentWeather.main.temp_min
-            )}°C`}</p>
+            <p className="temperature-min">{`Min: ${minMaxTemp.min}°C`}</p>
             <p className="temperature">{`${Math.round(
               currentWeather.main.temp
             )}°C`}</p>
-            <p className="temperature-max">{`Max: ${(
-              currentWeather.main.temp_max
-            )}°C`}</p>
+            <p className="temperature-max">{`Max: ${minMaxTemp.max}°C`}</p>
           </div>
           <div className="details">
-            <div className="parameter-row">
+            <div className="parameter-row-head">
               <span className="parameter-label">Details</span>
             </div>
             <div className="parameter-row">
@@ -39,6 +38,10 @@ const CurrentWeather = ({ currentWeather }) => {
               <span className="parameter-value">{`${Math.round(
                 currentWeather.main.feels_like
               )}°C`}</span>
+            </div>
+            <div className="parameter-row">
+              <span className="parameter-label">Average Temp: </span>
+              <span className="parameter-value">{`${avgTemp}°C`}</span>
             </div>
             <div className="parameter-row">
               <span className="parameter-label">Wind: </span>

@@ -7,32 +7,17 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from "react-accessible-accordion";
+import { calcForecastDays, calcWeeklyDays, calcMinMaxTemp } from "./helper";
 
-const WEEK_DAYS = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-
-const Weekly = ({ forecastWeather }) => {
-  const currentDay = new Date().getDay();
-  const weekly = forecastWeather.list.filter(
-    (item, index) => item.dt_txt.split(" ")[1] === "12:00:00"
-  );
-
-  const forecastDays = WEEK_DAYS.slice(currentDay + 1, 7).concat(
-    WEEK_DAYS.slice(0, currentDay)
-  );
-
+const Weekly = ({ weekly }) => {
+  const weeklyForecast = calcWeeklyDays(weekly);
+  const forecastDays = calcForecastDays();
+  const minMax = calcMinMaxTemp(weekly);
   return (
     <Container>
       <h2>Weekly</h2>
       <Accordion allowZeroExpanded>
-        {weekly.map((item, index) => {
+        {weeklyForecast.map((item, index) => {
           return (
             <AccordionItem key={index}>
               <AccordionItemHeading>
@@ -40,9 +25,16 @@ const Weekly = ({ forecastWeather }) => {
                   <div className="weekday">
                     <div className="left">
                       <h2>{forecastDays[index]}</h2>
-                      <h3 className="temperature">{item.main.temp}°C</h3>
+                      <h3 className="temperature">
+                        {(
+                          (Number(minMax[index].min) +
+                            Number(minMax[index].max)) /
+                          2
+                        ).toFixed(2)}
+                        °C
+                      </h3>
                       <p className="min-max">
-                        {item.main.temp_min}°C / {item.main.temp_max}°C
+                        {minMax[index].min}°C / {minMax[index].max}°C
                       </p>
                       <p className="weather">{item.weather[0].main}</p>
                     </div>

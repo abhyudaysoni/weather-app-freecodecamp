@@ -75,11 +75,21 @@ function App() {
         console.log(err.message);
       });
   };
+
+  const currentTime = new Date().getHours();
+  const timeArrayLength = Math.ceil((24 - currentTime) / 3 + 1);
+  const todayForecast = forecastWeather?.list.splice(0, timeArrayLength);
+  const weeklyForecast = forecastWeather?.list;
+
   return (
     <Container>
       <Search onSearchChange={searchChangeHandler} />
-      {currentWeather && <CurrentWeather currentWeather={currentWeather} />}
-      {forecastWeather && <ForecastWeather forecastWeather={forecastWeather} />}
+      {currentWeather && (
+        <CurrentWeather currentWeather={currentWeather} today={todayForecast} />
+      )}
+      {forecastWeather && (
+        <ForecastWeather today={todayForecast} weekly={weeklyForecast} />
+      )}
     </Container>
   );
 }

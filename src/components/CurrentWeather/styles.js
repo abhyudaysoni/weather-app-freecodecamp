@@ -44,6 +44,10 @@ export const Container = styled.div`
       width: 100%;
       padding-left: 1rem;
     }
+    .parameter-row-head span {
+      font-weight: 700;
+      text-decoration: underline;
+    }
     .parameter-row {
       display: flex;
       justify-content: space-between;
