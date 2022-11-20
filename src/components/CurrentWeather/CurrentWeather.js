@@ -1,5 +1,5 @@
 import React from "react";
-import { calcMinMaxTemp } from "../Forecast/Weekly/helper";
+import { calcMinMaxTemp } from "../../helpers/helper";
 import { Container } from "./styles";
 
 const CurrentWeather = ({ currentWeather, today }) => {
@@ -35,9 +35,7 @@ const CurrentWeather = ({ currentWeather, today }) => {
             </div>
             <div className="parameter-row">
               <span className="parameter-label">Feels like: </span>
-              <span className="parameter-value">{`${Math.round(
-                currentWeather.main.feels_like
-              )}°C`}</span>
+              <span className="parameter-value">{`${currentWeather.main.feels_like}°C`}</span>
             </div>
             <div className="parameter-row">
               <span className="parameter-label">Average Temp: </span>

@@ -2,7 +2,6 @@ import React from "react";
 import { Container } from "./styles";
 
 const Today = ({ today }) => {
-  // console.log(today);
   return (
     <Container>
       <h2>Today</h2>

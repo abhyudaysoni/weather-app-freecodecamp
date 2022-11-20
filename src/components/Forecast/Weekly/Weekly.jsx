@@ -7,7 +7,11 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from "react-accessible-accordion";
-import { calcForecastDays, calcWeeklyDays, calcMinMaxTemp } from "./helper";
+import {
+  calcForecastDays,
+  calcWeeklyDays,
+  calcMinMaxTemp,
+} from "../../../helpers/helper";
 
 const Weekly = ({ weekly }) => {
   const weeklyForecast = calcWeeklyDays(weekly);
