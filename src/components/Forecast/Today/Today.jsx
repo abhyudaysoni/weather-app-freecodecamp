@@ -1,4 +1,5 @@
 import React from "react";
+import { calcTime } from "../../../helpers/helper";
 import { Container } from "./styles";
 
 const Today = ({ today }) => {
@@ -7,7 +8,6 @@ const Today = ({ today }) => {
       <h2>Today</h2>
       <div className="today">
         {today.map((item, index) => {
-          const time = item.dt_txt.split(" ")[1];
           return (
             <div key={index} className="daily-item">
               <div>
@@ -18,7 +18,7 @@ const Today = ({ today }) => {
                 />
                 <h3>{item.main.temp}°C</h3>
               </div>
-              <label className="time">{time}</label>
+              <label className="time">{calcTime(item.dt_txt)}</label>
               <div className="details">
                 <p>{item.weather[0].description}</p>
               </div>

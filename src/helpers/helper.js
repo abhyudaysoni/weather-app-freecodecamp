@@ -52,3 +52,22 @@ export const calcMinMaxTemp = (weekly) => {
   }
   return minMax;
 };
+
+export const calcTime = (timeText) => {
+  const hours = Number(timeText.split(" ")[1].split(":")[0]);
+  if (hours < 12 && hours > 0) {
+    if (hours < 10) {
+      return `0${hours} AM`;
+    }
+    return `${hours} AM`;
+  } else if (hours === 0) {
+    return `${hours} AM`;
+  } else if (hours === 12) {
+    return `${hours} PM`;
+  } else if (hours > 12) {
+    if (hours - 12 < 10) {
+      return `0${hours - 12} PM`;
+    }
+    return `${hours - 12} PM`;
+  }
+};
