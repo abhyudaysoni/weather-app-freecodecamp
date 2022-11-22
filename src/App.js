@@ -20,6 +20,8 @@ export const Container = styled.div`
 function App() {
   const [currentWeather, setCurrentWeather] = useState(null);
   const [forecastWeather, setForecastWeather] = useState(null);
+  // console.log(currentWeather);
+  // console.log(forecastWeather);
 
   useEffect(() => {
     const currentWeatherFetch = fetch(
@@ -74,12 +76,19 @@ function App() {
 
   return (
     <Container>
-      <Search onSearchChange={searchChangeHandler} />
-      {currentWeather && (
-        <CurrentWeather currentWeather={currentWeather} today={todayForecast} />
-      )}
-      {forecastWeather && (
-        <ForecastWeather today={todayForecast} weekly={weeklyForecast} />
+      {currentWeather && forecastWeather && (
+        <>
+          <Search onSearchChange={searchChangeHandler} />
+          {currentWeather && (
+            <CurrentWeather
+              currentWeather={currentWeather}
+              today={todayForecast}
+            />
+          )}
+          {forecastWeather && (
+            <ForecastWeather today={todayForecast} weekly={weeklyForecast} />
+          )}
+        </>
       )}
     </Container>
   );

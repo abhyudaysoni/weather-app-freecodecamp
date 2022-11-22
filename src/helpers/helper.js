@@ -32,19 +32,22 @@ export const calcMinMaxTemp = (weekly) => {
     days.push(weekly);
   }
   const minMax = [];
+
   for (let i = 0; i < days.length; i++) {
-    [...days[i]].sort((a, b) => {
-      const tempA = a.main.temp;
-      const tempB = b.main.temp;
-      if (tempA < tempB) {
-        return -1;
-      } else {
-        return 1;
+    let min = Number.MAX_VALUE;
+    let max = Number.MIN_VALUE;
+    days[i].map((element, index) => {
+      if (element.main.temp > max) {
+        max = element.main.temp;
       }
+      if (element.main.temp < min) {
+        min = element.main.temp;
+      }
+      return element;
     });
     minMax.push({
-      min: +Number(days[i][0].main.temp).toFixed(2),
-      max: +Number(days[i][days[i].length - 1].main.temp).toFixed(2),
+      min: +Number(min).toFixed(2),
+      max: +Number(max).toFixed(2),
     });
   }
   return minMax;
