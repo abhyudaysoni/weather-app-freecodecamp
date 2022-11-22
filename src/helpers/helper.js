@@ -33,7 +33,7 @@ export const calcMinMaxTemp = (weekly) => {
   }
   const minMax = [];
   for (let i = 0; i < days.length; i++) {
-    days[i].sort((a, b) => {
+    [...days[i]].sort((a, b) => {
       const tempA = a.main.temp;
       const tempB = b.main.temp;
       if (tempA < tempB) {

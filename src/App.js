@@ -4,7 +4,6 @@ import CurrentWeather from "./components/CurrentWeather/CurrentWeather";
 import { WEATHER_API_URL, WEATHER_API_KEY } from "./api";
 import { useEffect, useState } from "react";
 import ForecastWeather from "./components/Forecast/ForecastWeather";
-// import { GEO_API_URL, geoApiOptions } from "./api";
 
 const sampleCity = { latitude: "28.6139", longitude: "77.2090" };
 
@@ -21,7 +20,6 @@ export const Container = styled.div`
 function App() {
   const [currentWeather, setCurrentWeather] = useState(null);
   const [forecastWeather, setForecastWeather] = useState(null);
-  // const [city, setCity] = useState();
 
   useEffect(() => {
     const currentWeatherFetch = fetch(
@@ -31,27 +29,17 @@ function App() {
     const forcastWeatherFetch = fetch(
       `${WEATHER_API_URL}/forecast?lat=${sampleCity.latitude}&lon=${sampleCity.longitude}&appid=${WEATHER_API_KEY}&units=metric`
     );
+
     Promise.all([currentWeatherFetch, forcastWeatherFetch])
       .then(async (res) => {
         const weatherRes = await res[0].json();
         const forecastRes = await res[1].json();
-        // const cityRes = await res[2].json();
-        // setCity(cityRes.data[0].city);
         setCurrentWeather({ city: "New Delhi", ...weatherRes });
         setForecastWeather({ ...forecastRes });
       })
       .catch((err) => {
         console.log(err.message);
       });
-    // const geolocationAPI = navigator.geolocation;
-    // geolocationAPI.getCurrentPosition((position) => {
-    // const lat = position.coords.latitude;
-    // const lon = position.coords.longitude;
-    // const updatedLat = `${Math.sign(lat) === -1 ? "-" : "+"}${lat}`;
-    // const updatedLon = `${Math.sign(lon) === -1 ? "-" : "+"}${lon}`;
-    // const fetchCityUrl = `${GEO_API_URL}/cities?location=${sampleCity.latitude}-${sampleCity.longitude}`;
-    // const getCityFetch = fetch(fetchCityUrl, geoApiOptions);
-    // });
   }, []);
 
   const searchChangeHandler = (searchData) => {
@@ -78,8 +66,11 @@ function App() {
 
   const currentTime = new Date().getHours();
   const timeArrayLength = Math.ceil((24 - currentTime) / 3 + 1);
-  const todayForecast = forecastWeather?.list.splice(0, timeArrayLength);
-  const weeklyForecast = forecastWeather?.list;
+  const todayForecast = forecastWeather?.list.slice(0, timeArrayLength);
+  const weeklyForecast = forecastWeather?.list.slice(
+    timeArrayLength,
+    forecastWeather?.list.length
+  );
 
   return (
     <Container>
