@@ -20,7 +20,14 @@ export const Container = styled.div`
     border-radius: 10px;
     box-shadow: 0px 0px 10px #d4d2d2;
     text-align: center;
-    min-width: fit-content;
+    width: 150px;
+    height: 200px;
+    img {
+      height: 70px;
+    }
+    h3 {
+      font-size: 1.5rem;
+    }
   }
   @media (min-width: 1080px) {
     .daily-item {
